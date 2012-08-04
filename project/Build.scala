@@ -13,11 +13,6 @@ object RwsScalaRootBuild extends Build {
     ,base = file("dispatch")
   ) dependsOn core
 
-  lazy val scalaz = Project(
-     id = "scalaz"
-    ,base = file("scalaz")
-  ) dependsOn core
-
   lazy val sample = Project(
      id = "sample"
     ,base = file("sample")

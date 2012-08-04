@@ -14,9 +14,11 @@ resolvers ++= Seq(
 libraryDependencies ++= Seq(
    "org.scalaz" %% "scalaz-core" % "7.0.0-M3"
   ,"org.scala-tools.time" % "time_2.9.1" % "0.5"
+  ,"net.liftweb" % "lift-json_2.9.1" % "2.4"
   ,"joda-time" % "joda-time" % "2.1"
   ,"org.joda" % "joda-convert" % "1.2"
   ,"org.specs2" %% "specs2" % "1.12" % "test"
+  ,"junit" % "junit" % "4.10" % "test"
   ,"org.mockito" % "mockito-all" % "1.9.0" % "test"
   ,"org.pegdown" % "pegdown" % "1.1.0" % "test"
 )
