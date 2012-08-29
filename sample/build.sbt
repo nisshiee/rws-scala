@@ -24,3 +24,6 @@ import jp.co.rakuten.webservice.dispatch._
 implicit val https = DispatchHttps
 """
 
+cleanupCommands := """
+Http.shutdown
+"""
