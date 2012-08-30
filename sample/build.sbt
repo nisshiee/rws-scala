@@ -17,3 +17,13 @@ libraryDependencies ++= Seq(
 
 testOptions in (Test, test) += Tests.Argument("console", "html", "junitxml")
 
+initialCommands := """
+import dispatch._
+import jp.co.rakuten.webservice._
+import jp.co.rakuten.webservice.dispatch._
+implicit val https = DispatchHttps
+"""
+
+cleanupCommands := """
+Http.shutdown
+"""

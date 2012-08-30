@@ -1,4 +1,4 @@
-name := "rws-scala"
+name := "rws-scala-dispatch"
 
 organization := "jp.co.rakuten.webservice"
 
@@ -23,4 +23,5 @@ testOptions in (Test, test) += Tests.Argument("console", "html", "junitxml")
 
 initialCommands := """
 import org.scala_tools.time.Imports._
+import jp.co.rakuten.webservice.dispatch._
 """
