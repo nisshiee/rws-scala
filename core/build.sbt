@@ -12,7 +12,8 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-   "org.scala-tools.time" % "time_2.9.1" % "0.5"
+   "org.scalaz" %% "scalaz-core" % "7.0.0-M3"
+  ,"org.scala-tools.time" % "time_2.9.1" % "0.5"
   ,"joda-time" % "joda-time" % "2.1"
   ,"org.joda" % "joda-convert" % "1.2"
   ,"org.specs2" %% "specs2" % "1.12" % "test"
