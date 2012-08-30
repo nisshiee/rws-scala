@@ -1,6 +1,8 @@
 package jp.co.rakuten.webservice.httptrait
 
+import scalaz._, Scalaz._
+
 trait RwsHttps {
 
-  def get(domain: String, path: String, params: Map[String, String]): Either[ConnectionError, Response]
+  def get(domain: String, path: String, params: Map[String, String]): Validation[ConnectionError, Response]
 }
