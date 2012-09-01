@@ -7,7 +7,7 @@ case class IchibaItemSearchBase private (
    keyword: Option[String]
   ,genreId: Option[String]
   ,itemCode: Option[String]
-) extends Paramater {
+) extends Parameter {
   def param: Seq[(String, String)] = Seq(
      keyword map { "keyword" -> _ }
     ,genreId map { "genreId" -> _ }

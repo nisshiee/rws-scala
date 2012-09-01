@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-sealed trait OrFlag extends Paramater {
+sealed trait OrFlag extends Parameter {
   def int: Int
   def param = Seq("orFlag" -> int.toString)
 }

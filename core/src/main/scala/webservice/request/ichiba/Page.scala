@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-case class Page(value: Int) extends Paramater {
+case class Page(value: Int) extends Parameter {
   def param = value match {
     case 1 => Seq()
     case v => Seq("page" -> v.toString)

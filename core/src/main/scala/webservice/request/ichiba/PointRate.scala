@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-sealed trait PointRate extends Paramater
+sealed trait PointRate extends Parameter
 case object PointRateAll extends PointRate {
   def param = Seq()
 }

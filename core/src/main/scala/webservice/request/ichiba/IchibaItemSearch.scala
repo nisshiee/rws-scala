@@ -67,7 +67,7 @@ object IchibaItemSearch {
       ,pamphletFlag
       ,appointDeliveryDateFlag
     ).map {
-      p: Paramater => p.param
+      p: Parameter => p.param
     }.flatten.toMap
     val res = https.get("app.rakuten.co.jp", "/services/api/IchibaItem/Search/20120723", params)
     res flatMap {

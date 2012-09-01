@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-sealed trait Sort extends Paramater {
+sealed trait Sort extends Parameter {
   def str: String
   def param = this match {
     case StandardSort => Seq()

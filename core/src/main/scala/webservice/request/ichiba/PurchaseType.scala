@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-sealed trait PurchaseType extends Paramater {
+sealed trait PurchaseType extends Parameter {
   def int: Int
   def param = Seq("purchaseType" -> int.toString)
 }

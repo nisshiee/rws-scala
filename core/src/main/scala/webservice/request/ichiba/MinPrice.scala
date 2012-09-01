@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-case class MinPrice(opt: Option[Long]) extends Paramater {
+case class MinPrice(opt: Option[Long]) extends Parameter {
   def param = opt.toSeq map { "minPrice" -> _.toString }
 }
 
