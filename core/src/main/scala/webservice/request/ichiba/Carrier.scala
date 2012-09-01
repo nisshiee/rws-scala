@@ -3,7 +3,7 @@ package jp.co.rakuten.webservice
 import net.liftweb.json._
 import scalaz._, Scalaz._
 
-sealed trait Carrier extends Paramater {
+sealed trait Carrier extends Parameter {
   def int: Int
   def param = Seq("carrier" -> int.toString)
 }

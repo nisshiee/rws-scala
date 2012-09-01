@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-sealed trait PamphletFlag extends Paramater {
+sealed trait PamphletFlag extends Parameter {
   def int: Int
   def param = Seq("pamphletFlag" -> int.toString)
 }

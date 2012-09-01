@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-sealed trait AppointDeliveryDateFlag extends Paramater {
+sealed trait AppointDeliveryDateFlag extends Parameter {
   def int: Int
   def param = Seq("appointDeliveryDateFlag" -> int.toString)
 }

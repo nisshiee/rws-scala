@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-sealed trait Availability extends Paramater {
+sealed trait Availability extends Parameter {
   def int: Int
   def param = this match {
     case Available => Seq()

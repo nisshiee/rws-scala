@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-case class NgKeyword(opt: Option[String]) extends Paramater {
+case class NgKeyword(opt: Option[String]) extends Parameter {
   def param = opt.toSeq map { "NGKeyword" -> _ }
 }
 

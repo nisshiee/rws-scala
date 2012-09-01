@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-sealed trait Field extends Paramater {
+sealed trait Field extends Parameter {
   def int: Int
   def param = this match {
     case StrictSearch => Seq()

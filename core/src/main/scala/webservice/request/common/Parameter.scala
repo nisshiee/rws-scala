@@ -1,5 +1,5 @@
 package jp.co.rakuten.webservice
 
-trait Paramater {
+trait Parameter {
   def param: Seq[(String, String)]
 }

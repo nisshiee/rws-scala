@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-case class ApplicationId(value: String) extends Paramater {
+case class ApplicationId(value: String) extends Parameter {
   def param = Seq("applicationId" -> value)
 }
 

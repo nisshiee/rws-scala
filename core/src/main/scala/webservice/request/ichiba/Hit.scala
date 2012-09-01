@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-case class Hit(value: Int) extends Paramater {
+case class Hit(value: Int) extends Parameter {
   def param = value match {
     case 30 => Seq()
     case v => Seq("hits" -> v.toString)

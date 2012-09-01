@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-sealed trait HasMovieFlag extends Paramater {
+sealed trait HasMovieFlag extends Parameter {
   def int: Int
   def param = Seq("hasMovieFlag" -> int.toString)
 }

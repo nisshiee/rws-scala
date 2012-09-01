@@ -1,6 +1,6 @@
 package jp.co.rakuten.webservice
 
-sealed trait CreditCardFlag extends Paramater {
+sealed trait CreditCardFlag extends Parameter {
   def int: Int
   def param = Seq("creditCardFlag" -> int.toString)
 }
