@@ -6,6 +6,7 @@ package object webservice
   with ShopCodes
   with Hits
   with Pages
+  with PointRates
   with MinPrices
   with MaxPrices
   with NgKeywords

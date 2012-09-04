@@ -2,7 +2,10 @@ package jp.co.rakuten.webservice
 
 sealed trait GiftFlag extends Parameter {
   def int: Int
-  def param = Seq("giftFlag" -> int.toString)
+  def param = this match {
+    case GiftAll => Seq()
+    case g => Seq("giftFlag" -> g.int.toString)
+  }
 }
 case object GiftAll extends GiftFlag {
   val int = 0

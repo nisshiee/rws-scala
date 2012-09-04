@@ -1,11 +1,13 @@
 package jp.co.rakuten.webservice
 
-import net.liftweb.json._
 import scalaz._, Scalaz._
 
 sealed trait Carrier extends Parameter {
   def int: Int
-  def param = Seq("carrier" -> int.toString)
+  def param = this match {
+    case PC => Seq()
+    case a => Seq("carrier" -> a.int.toString)
+  }
 }
 case object PC extends Carrier {
   val int = 0

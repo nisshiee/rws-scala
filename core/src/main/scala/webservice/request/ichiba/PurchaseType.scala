@@ -2,7 +2,10 @@ package jp.co.rakuten.webservice
 
 sealed trait PurchaseType extends Parameter {
   def int: Int
-  def param = Seq("purchaseType" -> int.toString)
+  def param = this match {
+    case NormalOrder => Seq()
+    case _ => Seq("purchaseType" -> int.toString)
+  }
 }
 case object NormalOrder extends PurchaseType {
   val int = 0
