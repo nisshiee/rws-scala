@@ -5,10 +5,13 @@ case object ShipOverseaAll extends ShipOversea {
   def param = Seq()
 }
 case class OnlyOversea(area: OverseaArea) extends ShipOversea {
-  def param = Seq(
-     "shipOverseasFlag" -> "1"
-    ,"shipOverseasArea" -> area.code
-  )
+  def param = area match {
+    case AllCountry => Seq("shipOverseasFlag" -> "1")
+    case _ => Seq(
+       "shipOverseasFlag" -> "1"
+      ,"shipOverseasArea" -> area.code
+    )
+  }
 }
 
 trait ShipOverseas {

@@ -1,9 +1,38 @@
 package jp.co.rakuten.webservice
 
-case class MaxAffiliateRate(opt: Option[Int]) extends Parameter {
-  def param = opt.toSeq map { "maxAffiliateRate" -> _.toString }
+import scalaz._, Scalaz._
+
+sealed trait MaxAffiliateRate extends Parameter
+
+object MaxAffiliateRate {
+
+  private case class On(value: Int) extends MaxAffiliateRate {
+
+    def param = Seq("maxAffiliateRate" -> TenthPlace.int2str(value))
+  }
+
+  case object Off extends MaxAffiliateRate {
+
+    def param = Seq()
+  }
+
+  def apply(value: Double): MaxAffiliateRate = TenthPlace.double2int(value) match {
+    case i if i < 10 => On(10)
+    case i if i > 999 => On(999)
+    case i => On(i)
+  }
+
+  def unapply(m: MaxAffiliateRate): Option[Double] = m match {
+    case On(i) => TenthPlace.int2double(i).some
+    case Off => none
+  }
 }
 
 trait MaxAffiliateRates {
-  implicit def int2maxAffiliateRate(value: Int): MaxAffiliateRate = MaxAffiliateRate(Some(value))
+  implicit def double2maxAffiliateRate(value: Double): MaxAffiliateRate = MaxAffiliateRate(value)
+  implicit def float2maxAffiliateRate(value: Float): MaxAffiliateRate = MaxAffiliateRate(value)
+  implicit def doubleOpt2maxAffiliateRate(opt: Option[Double]): MaxAffiliateRate =
+    opt ∘ double2maxAffiliateRate | MaxAffiliateRate.Off
+  implicit def floatOpt2maxAffiliateRate(opt: Option[Float]): MaxAffiliateRate =
+    opt ∘ float2maxAffiliateRate | MaxAffiliateRate.Off
 }

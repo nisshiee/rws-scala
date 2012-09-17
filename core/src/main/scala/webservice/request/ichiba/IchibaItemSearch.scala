@@ -5,32 +5,32 @@ import scalaz._, Scalaz._
 
 object IchibaItemSearch {
 
-  def run(
+  def apply(
      applicationId: ApplicationId
     ,base: IchibaItemSearchBase
     ,affiliateId: AffiliateId = AffiliateId(None)
-    ,shopCode: ShopCode = ShopCode(None)
+    ,shopCode: ShopCode = ShopCode.Off
     ,hit: Hit = 30
     ,page: Page = 1
-    ,sort: Sort = StandardSort
-    ,minPrice: MinPrice = MinPrice(None)
-    ,maxPrice: MaxPrice = MaxPrice(None)
+    ,sort: Sort = Sort.Standard
+    ,minPrice: MinPrice = MinPrice.Off
+    ,maxPrice: MaxPrice = MaxPrice.Off
     ,availability: Availability = Available
     ,field: Field = StrictSearch
     ,carrier: Carrier = PC
     ,imageFlag: ImageFlag = ImageAll
     ,orFlag: OrFlag = AndSearch
-    ,ngKeyword: NgKeyword = NgKeyword(None)
+    ,ngKeyword: NgKeyword = NgKeyword.Off
     ,purchaseType: PurchaseType = NormalOrder
     ,shipOversea: ShipOversea = ShipOverseaAll
     ,asuraku: Asuraku = AsurakuAll
-    ,pointRate: PointRate = PointRateAll
+    ,pointRate: PointRate = PointRate.Off
     ,postageFlag: PostageFlag = PostageAll
     ,creditCardFlag: CreditCardFlag = CreditCardAll
     ,giftFlag: GiftFlag = GiftAll
     ,hasReviewFlag: HasReviewFlag = HasReviewAll
-    ,maxAffiliateRate: MaxAffiliateRate = MaxAffiliateRate(None)
-    ,minAffiliateRate: MinAffiliateRate = MinAffiliateRate(None)
+    ,maxAffiliateRate: MaxAffiliateRate = MaxAffiliateRate.Off
+    ,minAffiliateRate: MinAffiliateRate = MinAffiliateRate.Off
     ,hasMovieFlag: HasMovieFlag = HasMovieAll
     ,pamphletFlag: PamphletFlag = PamphletAll
     ,appointDeliveryDateFlag: AppointDeliveryDateFlag = AppointDeliveryDateAll

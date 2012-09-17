@@ -2,7 +2,10 @@ package jp.co.rakuten.webservice
 
 sealed trait HasMovieFlag extends Parameter {
   def int: Int
-  def param = Seq("hasMovieFlag" -> int.toString)
+  def param = this match {
+    case HasMovieAll => Seq()
+    case _ => Seq("hasMovieFlag" -> int.toString)
+  }
 }
 case object HasMovieAll extends HasMovieFlag {
   val int = 0

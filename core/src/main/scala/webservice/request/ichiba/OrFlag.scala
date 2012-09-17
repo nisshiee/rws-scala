@@ -2,7 +2,10 @@ package jp.co.rakuten.webservice
 
 sealed trait OrFlag extends Parameter {
   def int: Int
-  def param = Seq("orFlag" -> int.toString)
+  def param = this match {
+    case AndSearch => Seq()
+    case _ => Seq("orFlag" -> int.toString)
+  }
 }
 case object AndSearch extends OrFlag {
   val int = 0

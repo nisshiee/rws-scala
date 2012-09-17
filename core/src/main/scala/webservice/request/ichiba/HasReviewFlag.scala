@@ -2,7 +2,10 @@ package jp.co.rakuten.webservice
 
 sealed trait HasReviewFlag extends Parameter {
   def int: Int
-  def param = Seq("hasReviewFlag" -> int.toString)
+  def param = this match {
+    case HasReviewAll => Seq()
+    case _ => Seq("hasReviewFlag" -> int.toString)
+  }
 }
 case object HasReviewAll extends HasReviewFlag {
   val int = 0

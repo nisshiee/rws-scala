@@ -1,9 +1,29 @@
 package jp.co.rakuten.webservice
 
-case class Hit(value: Int) extends Parameter {
-  def param = value match {
-    case 30 => Seq()
-    case v => Seq("hits" -> v.toString)
+import scalaz._, Scalaz._
+
+sealed trait Hit extends Parameter {
+  def value: Int
+}
+
+object Hit {
+
+  private case class Impl(value: Int) extends Hit {
+
+    def param = value match {
+      case 30 => Seq()
+      case v => Seq("hits" -> v.toString)
+    }
+  }
+
+  def apply(value: Int): Hit = value match {
+    case v if v < 1 => Impl(1)
+    case v if v > 30 => Impl(30)
+    case v => Impl(v)
+  }
+
+  def unapply(h: Hit): Option[Int] = h match {
+    case Impl(v) => v.some
   }
 }
 
