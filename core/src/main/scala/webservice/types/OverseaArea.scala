@@ -5,7 +5,7 @@ sealed trait OverseaArea {
   def code: String
 }
 case object AllCountry extends OverseaArea {
-  val name = "ワールドワイド（すべての国）"
+  val name = "ワールドワイド"
   val code = "ALL"
 }
 case object UnitedStates extends OverseaArea {
@@ -147,5 +147,48 @@ case object Thailand extends OverseaArea {
 case object VietNam extends OverseaArea {
   val name = "ベトナム"
   val code = "VN"
+}
+
+object OverseaArea {
+
+  def parseOpt: String => Option[OverseaArea] = {
+    case "ワールドワイド" => Some(AllCountry)
+    case "アメリカ" => Some(UnitedStates)
+    case "アルゼンチン" => Some(Argentina)
+    case "ブラジル" => Some(Brazil)
+    case "カナダ" => Some(Canada)
+    case "メキシコ" => Some(Mexico)
+    case "オーストリア" => Some(Austria)
+    case "ベルギー" => Some(Belgium)
+    case "デンマーク" => Some(Denmark)
+    case "フランス" => Some(France)
+    case "ドイツ" => Some(Germany)
+    case "ギリシャ" => Some(Greece)
+    case "イタリア" => Some(Italy)
+    case "モロッコ" => Some(Morocco)
+    case "オランダ" => Some(Netherlands)
+    case "ポーランド" => Some(Poland)
+    case "ポルトガル" => Some(Portugal)
+    case "ロシア" => Some(Russia)
+    case "スペイン" => Some(Spain)
+    case "スウェーデン" => Some(Sweden)
+    case "スイス" => Some(Switzerland)
+    case "トルコ" => Some(Turkey)
+    case "英国" => Some(UnitedKingdom)
+    case "オーストラリア" => Some(Australia)
+    case "中国" => Some(China)
+    case "香港" => Some(HongKong)
+    case "インド" => Some(India)
+    case "インドネシア" => Some(Indonesia)
+    case "韓国" => Some(Korea)
+    case "マレーシア" => Some(Malaysia)
+    case "ニュージーランド" => Some(NewZealand)
+    case "フィリピン" => Some(Philippines)
+    case "シンガポール" => Some(Singapore)
+    case "台湾" => Some(Taiwan)
+    case "タイ" => Some(Thailand)
+    case "ベトナム" => Some(VietNam)
+    case _ => None
+  }
 }
 

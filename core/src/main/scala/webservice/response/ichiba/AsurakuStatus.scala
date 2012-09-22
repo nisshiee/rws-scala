@@ -23,13 +23,18 @@ object AsurakuStatus {
     case _ => JsonParseError("asurakuClosingTime must be HH:MM").failure
   }
 
-  def parseAreasVld(str: String): Validation[ApiError, List[AsurakuArea]] =
-    str
-      .split('/')
-      .toList
-      .map(AsurakuArea.parseOpt)
-      .sequence[Option, AsurakuArea]
-      .toSuccess(JsonParseError("asurakuArea can't be parsed"))
+  def parseAreasVld(str: String): Validation[ApiError, List[AsurakuArea]] = {
+    def error = JsonParseError("asurakuArea can't be parsed")
+    if (str endsWith "/")
+      error.failure
+    else
+      str
+        .split('/')
+        .toList
+        .map(AsurakuArea.parseOpt)
+        .sequence[Option, AsurakuArea]
+        .toSuccess(error)
+  }
 
   def parseVld(
     flag: Int, closingTimeStr: String, areaStr: String

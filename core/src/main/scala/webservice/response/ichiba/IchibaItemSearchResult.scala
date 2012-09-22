@@ -28,6 +28,7 @@ class Item (
   ,val includePostage: Boolean
   ,val acceptCreditCard: Boolean
   ,val shopOfTheYear: Boolean
+  ,val shipOverseaStatus: ShipOverseaStatus
   ,val asurakuStatus: AsurakuStatus
   ,val affiliateRate: Double
   ,val startTime: Option[LocalDateTime]
@@ -37,7 +38,7 @@ class Item (
   ,val pointRate: Int
   ,val pointRateStartTime: Option[LocalDateTime]
   ,val pointRateEndTime: Option[LocalDateTime]
-  ,val accesptGift: Boolean
+  ,val acceptGift: Boolean
   ,val shopName: String
   ,val shopCode: String
   ,val shopUrl: String
@@ -78,7 +79,7 @@ object Item {
 
   val strOpt: String => Option[String] = {
     case "" => none
-    case s => s.some
+    case s => Option(s)
   }
 
   def doubleVld(str: String, paramName: String): Validation[ApiError, Double] =
@@ -124,6 +125,7 @@ object Item {
     includePostage <- tfVld(json.postageFlag, false, "postageFlag")
     acceptCreditCard <- tfVld(json.creditCardFlag, true, "creditCardFlag")
     shopOfTheYear <- tfVld(json.shopOfTheYearFlag, true, "shopOfTheYear")
+    shipOversea <- ShipOverseaStatus.parseVld(json.shipOverseasFlag, json.shipOverseasArea)
     asuraku <- AsurakuStatus.parseVld(json.asurakuFlag, json.asurakuClosingTime, json.asurakuArea)
     affiliateRate <- doubleVld(json.affiliateRate, "affiliateRate")
     startTime <- dateTimeOptVld(json.startTime, "startTime")
@@ -147,6 +149,7 @@ object Item {
     ,includePostage
     ,acceptCreditCard
     ,shopOfTheYear
+    ,shipOversea
     ,asuraku
     ,affiliateRate
     ,startTime
