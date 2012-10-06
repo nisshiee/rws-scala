@@ -28,6 +28,9 @@ project/boot/
 .CVS
 .hg*
 
+# etags
+TAGS
+
 # switch to regexp syntax.
 #  syntax: regexp
 #  ^\.pc/
