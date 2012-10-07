@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice
+package jp.co.rakuten.webservice.util
 
 import scala.math._
 import scalaz._, Scalaz._

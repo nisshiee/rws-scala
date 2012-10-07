@@ -1,5 +1,6 @@
 package jp.co.rakuten.webservice
 
+import util.TenthPlace
 import scalaz._, Scalaz._
 
 sealed trait MaxAffiliateRate extends Parameter

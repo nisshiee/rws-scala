@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice
+package jp.co.rakuten.webservice.util
 
 import org.specs2._, matcher.DataTables
 
