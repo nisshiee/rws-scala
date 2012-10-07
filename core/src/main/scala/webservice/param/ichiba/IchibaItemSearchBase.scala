@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice
+package jp.co.rakuten.webservice.param.ichiba
 
-import util._
+import jp.co.rakuten.webservice.util._
 
 /**
  * keyword, genreId, itemCodeのいずれかがセットされている事が保証された、リクエストパラメータ
