@@ -2,6 +2,7 @@ package jp.co.rakuten.webservice
 
 import jp.co.rakuten.webservice.Implicits._
 import jp.co.rakuten.webservice.httptrait._
+import jp.co.rakuten.webservice.param.ichiba._
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
 

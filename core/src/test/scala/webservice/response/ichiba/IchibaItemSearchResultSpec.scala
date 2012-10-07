@@ -1,5 +1,6 @@
 package jp.co.rakuten.webservice
 
+import jp.co.rakuten.webservice.param.ichiba._
 import org.specs2._, matcher.MatchResult
 import scalaz._, Scalaz._
 import org.scala_tools.time.Imports._

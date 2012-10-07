@@ -1,5 +1,7 @@
 package jp.co.rakuten.webservice
 
+import jp.co.rakuten.webservice.param.ichiba._
+import jp.co.rakuten.webservice.Implicits._
 import scalaz._, Scalaz._
 
 case class IchibaItemSearchResult (

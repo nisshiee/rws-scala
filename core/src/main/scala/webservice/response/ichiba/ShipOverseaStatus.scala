@@ -1,5 +1,6 @@
 package jp.co.rakuten.webservice
 
+import jp.co.rakuten.webservice.param.ichiba._
 import scalaz._, Scalaz._
 
 sealed trait ShipOverseaStatus
