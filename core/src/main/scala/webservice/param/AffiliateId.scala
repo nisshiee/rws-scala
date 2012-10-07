@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice
+package jp.co.rakuten.webservice.param
 
-import util._
+import jp.co.rakuten.webservice.util._
 
 case class AffiliateId(opt: Option[String]) extends Parameter {
   def param = opt.toSeq map { "affiliateId" -> _ }

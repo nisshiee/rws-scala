@@ -1,9 +1,7 @@
 package jp.co.rakuten
 
 package object webservice
-  extends ApplicationIds
-  with AffiliateIds
-  with ShopCodes
+  extends ShopCodes
   with Hits
   with Pages
   with PointRates

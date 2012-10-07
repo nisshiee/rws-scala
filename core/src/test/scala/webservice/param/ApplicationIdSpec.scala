@@ -1,5 +1,6 @@
-package jp.co.rakuten.webservice
+package jp.co.rakuten.webservice.param
 
+import jp.co.rakuten.webservice.Implicits._
 import org.specs2._
 
 class ApplicationIdSpec extends Specification { def is =
