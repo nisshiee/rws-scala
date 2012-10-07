@@ -1,5 +1,6 @@
 package jp.co.rakuten.webservice
 
+import util._
 import scalaz._, Scalaz._
 
 sealed trait Carrier extends Parameter {

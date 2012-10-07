@@ -1,5 +1,7 @@
 package jp.co.rakuten.webservice
 
+import util._
+
 sealed trait Asuraku extends Parameter
 case object AsurakuAll extends Asuraku {
   def param = Seq()

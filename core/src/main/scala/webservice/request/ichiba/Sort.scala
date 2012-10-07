@@ -1,5 +1,7 @@
 package jp.co.rakuten.webservice
 
+import util._
+
 sealed trait Sort extends Parameter {
   def str: String
   def param = this match {

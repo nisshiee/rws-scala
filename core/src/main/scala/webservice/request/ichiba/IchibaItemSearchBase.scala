@@ -1,5 +1,7 @@
 package jp.co.rakuten.webservice
 
+import util._
+
 /**
  * keyword, genreId, itemCodeのいずれかがセットされている事が保証された、リクエストパラメータ
  */

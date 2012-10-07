@@ -1,6 +1,7 @@
 package jp.co.rakuten.webservice
 
 import httptrait._
+import util._
 import scalaz._, Scalaz._
 
 object IchibaItemSearch {

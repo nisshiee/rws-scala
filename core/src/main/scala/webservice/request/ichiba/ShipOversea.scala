@@ -1,5 +1,7 @@
 package jp.co.rakuten.webservice
 
+import util._
+
 sealed trait ShipOversea extends Parameter
 case object ShipOverseaAll extends ShipOversea {
   def param = Seq()

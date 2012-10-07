@@ -1,5 +1,7 @@
 package jp.co.rakuten.webservice
 
+import util._
+
 sealed trait CreditCardFlag extends Parameter {
   def int: Int
   def param = this match {

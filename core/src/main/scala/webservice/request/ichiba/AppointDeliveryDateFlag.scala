@@ -1,5 +1,7 @@
 package jp.co.rakuten.webservice
 
+import util._
+
 sealed trait AppointDeliveryDateFlag extends Parameter {
   def int: Int
   def param = this match {
