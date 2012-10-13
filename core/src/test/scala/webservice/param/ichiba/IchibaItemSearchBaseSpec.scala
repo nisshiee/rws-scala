@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice.param.ichiba
+package rwsscala.param.ichiba
 
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._

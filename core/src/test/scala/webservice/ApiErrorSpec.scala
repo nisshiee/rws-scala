@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice
+package rwsscala
 
 import org.specs2._, matcher.DataTables
 
@@ -31,4 +31,3 @@ class ApiErrorSpec extends Specification with DataTables { def is =
       BadResponse.code2Apply(c)(e, d) must equalTo(r)
     }
 }
-  

@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice.param.ichiba
+package rwsscala.param.ichiba
 
 sealed trait OverseaArea {
   def name: String

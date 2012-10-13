@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice.param.ichiba
+package rwsscala.param.ichiba
 
-import jp.co.rakuten.webservice.util._
+import rwsscala.util._
 
 sealed trait AppointDeliveryDateFlag extends Parameter {
   def int: Int

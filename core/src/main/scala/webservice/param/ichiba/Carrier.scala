@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice.param.ichiba
+package rwsscala.param.ichiba
 
-import jp.co.rakuten.webservice._, util._
+import rwsscala._, util._
 import scalaz._, Scalaz._
 
 sealed trait Carrier extends Parameter {

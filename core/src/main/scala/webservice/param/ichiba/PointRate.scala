@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice.param.ichiba
+package rwsscala.param.ichiba
 
-import jp.co.rakuten.webservice.util._
+import rwsscala.util._
 import scalaz._, Scalaz._
 
 sealed trait PointRate extends Parameter

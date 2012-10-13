@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice.param
+package rwsscala.param
 
-import jp.co.rakuten.webservice.util._
+import rwsscala.util._
 
 case class ApplicationId(value: String) extends Parameter {
   def param = Seq("applicationId" -> value)

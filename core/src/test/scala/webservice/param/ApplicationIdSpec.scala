@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice.param
+package rwsscala.param
 
-import jp.co.rakuten.webservice.Implicits._
+import rwsscala.Implicits._
 import org.specs2._
 
 class ApplicationIdSpec extends Specification { def is =

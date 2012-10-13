@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice
+package rwsscala
 
 import org.specs2._, matcher.DataTables
 import net.liftweb.json._, Implicits._, JsonDSL._

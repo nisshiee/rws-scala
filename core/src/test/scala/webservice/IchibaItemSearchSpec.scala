@@ -1,8 +1,8 @@
-package jp.co.rakuten.webservice
+package rwsscala
 
-import jp.co.rakuten.webservice.Implicits._
-import jp.co.rakuten.webservice.httptrait._
-import jp.co.rakuten.webservice.param.ichiba._
+import rwsscala.Implicits._
+import rwsscala.httptrait._
+import rwsscala.param.ichiba._
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
 

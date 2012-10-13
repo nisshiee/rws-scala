@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice
+package rwsscala
 
 import httptrait._
 import scalaz._, Scalaz._

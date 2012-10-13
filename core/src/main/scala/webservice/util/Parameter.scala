@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice.util
+package rwsscala.util
 
 trait Parameter {
   def param: Seq[(String, String)]

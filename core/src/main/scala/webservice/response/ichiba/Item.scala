@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice
+package rwsscala
 
 import org.scala_tools.time.Imports._
 import scalaz._, Scalaz._

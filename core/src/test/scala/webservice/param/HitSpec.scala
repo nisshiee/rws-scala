@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice.param
+package rwsscala.param
 
-import jp.co.rakuten.webservice.Implicits._
+import rwsscala.Implicits._
 import org.specs2._, matcher.DataTables
 
 class HitSpec extends Specification with DataTables { def is =

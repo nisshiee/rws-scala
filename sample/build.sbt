@@ -1,8 +1,8 @@
 name := "rws-scala-sample"
 
-organization := "jp.co.rakuten.webservice"
+organization := "nisshiee.org"
 
-version := "1.0.0-SNAPSHOT"
+version := "0.0.1-SNAPSHOT"
 
 scalaVersion := "2.9.2"
 
@@ -19,8 +19,8 @@ testOptions in (Test, test) += Tests.Argument("console", "html", "junitxml")
 
 initialCommands := """
 import dispatch._
-import jp.co.rakuten.webservice._
-import jp.co.rakuten.webservice.dispatch._
+import rwsscala._
+import rwsscala.dispatch._
 implicit val https = DispatchHttps
 """
 

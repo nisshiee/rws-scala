@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice
+package rwsscala
 
-import jp.co.rakuten.webservice.param.ichiba._
+import rwsscala.param.ichiba._
 import scalaz._, Scalaz._
 
 sealed trait ShipOverseaStatus

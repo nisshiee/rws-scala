@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice
+package rwsscala
 
-import jp.co.rakuten.webservice.param.ichiba._
+import rwsscala.param.ichiba._
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
 import org.scala_tools.time.Imports._

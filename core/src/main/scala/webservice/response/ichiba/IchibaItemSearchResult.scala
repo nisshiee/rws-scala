@@ -1,7 +1,7 @@
-package jp.co.rakuten.webservice
+package rwsscala
 
-import jp.co.rakuten.webservice.param.ichiba._
-import jp.co.rakuten.webservice.Implicits._
+import rwsscala.param.ichiba._
+import rwsscala.Implicits._
 import scalaz._, Scalaz._
 
 case class IchibaItemSearchResult (

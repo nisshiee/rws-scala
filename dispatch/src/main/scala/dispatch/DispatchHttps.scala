@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice.dispatch
+package rwsscala.dispatch
 
-import jp.co.rakuten.webservice.httptrait._
+import rwsscala.httptrait._
 import dispatch._
 import com.ning.http.client.{ Response => DRes }
 import scalaz._, Scalaz._

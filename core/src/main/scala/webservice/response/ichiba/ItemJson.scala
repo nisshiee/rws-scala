@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice
+package rwsscala
 
 import scalaz._, Scalaz._
 import net.liftweb.json._

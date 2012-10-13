@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice.param.ichiba
+package rwsscala.param.ichiba
 
-import jp.co.rakuten.webservice.Implicits._
+import rwsscala.Implicits._
 import org.specs2._, matcher.DataTables
 
 class ShipOverseaSpec extends Specification with DataTables { def is =

@@ -1,4 +1,4 @@
-package jp.co.rakuten.webservice.util
+package rwsscala.util
 
 import org.specs2._, matcher.DataTables
 

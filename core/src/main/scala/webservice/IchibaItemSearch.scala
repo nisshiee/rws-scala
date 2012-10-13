@@ -1,9 +1,9 @@
-package jp.co.rakuten.webservice
+package rwsscala
 
-import jp.co.rakuten.webservice.httptrait._
-import jp.co.rakuten.webservice.util._
-import jp.co.rakuten.webservice.param._
-import jp.co.rakuten.webservice.param.ichiba._
+import rwsscala.httptrait._
+import rwsscala.util._
+import rwsscala.param._
+import rwsscala.param.ichiba._
 import Implicits._
 import scalaz._, Scalaz._
 
