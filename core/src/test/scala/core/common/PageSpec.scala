@@ -1,6 +1,5 @@
 package rwsscala
 
-import rwsscala.Implicits._
 import org.specs2._, matcher.DataTables
 
 class PageSpec extends Specification with DataTables { def is =

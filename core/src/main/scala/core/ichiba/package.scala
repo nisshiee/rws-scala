@@ -1,13 +1,7 @@
 package rwsscala
 
-import ichiba._
-
-object Implicits
-  extends ApplicationIds
-  with AffiliateIds
-  with ShopCodes
-  with Hits
-  with Pages
+package object ichiba
+  extends ShopCodes
   with PointRates
   with MinPrices
   with MaxPrices
@@ -16,6 +10,5 @@ object Implicits
   with MinAffiliateRates
   with Asurakus
   with ShipOverseas
-  with ApiErrors
 {
 }

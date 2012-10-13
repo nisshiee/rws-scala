@@ -3,7 +3,6 @@ package rwsscala.ichiba
 import rwsscala._
 import rwsscala.httptrait._
 import rwsscala.util._
-import Implicits._
 import scalaz._, Scalaz._
 
 object IchibaItemSearch {

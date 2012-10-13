@@ -1,7 +1,6 @@
 package rwsscala.ichiba
 
 import rwsscala._
-import rwsscala.Implicits._
 import scalaz._, Scalaz._
 
 case class IchibaItemSearchResult (

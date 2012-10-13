@@ -1,6 +1,5 @@
 package rwsscala.ichiba
 
-import rwsscala.Implicits._
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
 

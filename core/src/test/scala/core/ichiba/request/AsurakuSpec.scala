@@ -1,7 +1,6 @@
 package rwsscala.ichiba
 
 import rwsscala._
-import rwsscala.Implicits._
 import org.specs2._, matcher.DataTables
 
 class AsurakuSpec extends Specification with DataTables { def is =

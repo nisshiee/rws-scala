@@ -1,6 +1,5 @@
 package rwsscala
 
-import rwsscala.Implicits._
 import org.specs2._
 
 class ApplicationIdSpec extends Specification { def is =

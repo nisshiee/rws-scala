@@ -18,11 +18,9 @@ libraryDependencies ++= Seq(
 testOptions in (Test, test) += Tests.Argument("console", "html", "junitxml")
 
 initialCommands := """
-import dispatch._
-import rwsscala._, Implicits._
-import rwsscala.ichiba._
-import rwsscala.dispatch._
-implicit val https = DispatchHttps
+import dispatch.Http
+import rwsscala._, rwsscala.ichiba._
+implicit val https = rwsscala.dispatch.DispatchHttps
 """
 
 cleanupCommands := """
