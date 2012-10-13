@@ -24,6 +24,8 @@ class AsurakuStatusSpec extends Specification with DataTables { def is =
       "flagが0,1以外の場合はJsonParseErrorをfailureで返す"                                          ! e8^
                                                                                                     end
 
+  import AsurakuArea._
+
   def e1 =
     "input" || "result"              |
     "00:00" !! new LocalTime(0, 0)   |

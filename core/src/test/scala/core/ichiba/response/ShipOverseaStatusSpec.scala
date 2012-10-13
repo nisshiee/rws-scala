@@ -20,6 +20,8 @@ class ShipOverseaStatusSpec extends Specification with DataTables { def is =
       "flagが0,1以外の場合はJsonParseErrorをfailureで返す"                                          ! e6^
                                                                                                     end
 
+  import OverseaArea._
+
 
   def e1 =
     "input"                                   || "result"                              |

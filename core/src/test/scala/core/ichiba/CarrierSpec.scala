@@ -17,6 +17,8 @@ class CarrierSpec extends Specification with DataTables { def is =
       "0,1,2以外の場合、JsonParseErrorがfailureで返る"                                              ! e5^
                                                                                                     end
 
+  import Carrier._
+
   def e1 = PC.param must beEmpty
   def e2 = Mobile.param must equalTo(Seq("carrier" -> "1"))
   def e3 = SP.param must equalTo(Seq("carrier" -> "2"))

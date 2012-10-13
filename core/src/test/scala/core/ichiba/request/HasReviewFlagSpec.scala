@@ -6,10 +6,12 @@ class HasReviewFlagSpec extends Specification { def is =
 
   "HasReviewFlag"                                                                                   ^
     "param"                                                                                         ^
-      "HasReviewAllの場合Seq()が返る"                                                               ! e1^
-      "OnlyHasReviewの場合Seq(\"hasReviewFlag\" -> \"1\")が返る"                                    ! e2^
+      "Allの場合Seq()が返る"                                                                        ! e1^
+      "OnlyHaveの場合Seq(\"hasReviewFlag\" -> \"1\")が返る"                                         ! e2^
                                                                                                     end
 
-  def e1 = HasReviewAll.param must beEmpty
-  def e2 = OnlyHasReview.param must equalTo(Seq("hasReviewFlag" -> "1"))
+  import HasReviewFlag._
+
+  def e1 = All.param must beEmpty
+  def e2 = OnlyHave.param must equalTo(Seq("hasReviewFlag" -> "1"))
 }

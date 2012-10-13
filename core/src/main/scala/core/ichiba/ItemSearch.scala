@@ -17,25 +17,25 @@ object ItemSearch {
     ,sort: Sort = Sort.Standard
     ,minPrice: MinPrice = MinPrice.Off
     ,maxPrice: MaxPrice = MaxPrice.Off
-    ,availability: Availability = Available
-    ,field: Field = StrictSearch
-    ,carrier: Carrier = PC
-    ,imageFlag: ImageFlag = ImageAll
-    ,orFlag: OrFlag = AndSearch
+    ,availability: Availability = Availability.OnlyAvailable
+    ,searchField: SearchField = SearchField.Strict
+    ,carrier: Carrier = Carrier.PC
+    ,imageFlag: ImageFlag = ImageFlag.All
+    ,orFlag: OrFlag = OrFlag.And
     ,ngKeyword: NgKeyword = NgKeyword.Off
-    ,purchaseType: PurchaseType = NormalOrder
-    ,shipOversea: ShipOversea = ShipOverseaAll
-    ,asuraku: Asuraku = AsurakuAll
+    ,purchaseType: PurchaseType = PurchaseType.NormalOrder
+    ,shipOversea: ShipOversea = ShipOversea.All
+    ,asuraku: Asuraku = Asuraku.All
     ,pointRate: PointRate = PointRate.Off
-    ,postageFlag: PostageFlag = PostageAll
-    ,creditCardFlag: CreditCardFlag = CreditCardAll
-    ,giftFlag: GiftFlag = GiftAll
-    ,hasReviewFlag: HasReviewFlag = HasReviewAll
+    ,postageFlag: PostageFlag = PostageFlag.All
+    ,creditCardFlag: CreditCardFlag = CreditCardFlag.All
+    ,giftFlag: GiftFlag = GiftFlag.All
+    ,hasReviewFlag: HasReviewFlag = HasReviewFlag.All
     ,maxAffiliateRate: MaxAffiliateRate = MaxAffiliateRate.Off
     ,minAffiliateRate: MinAffiliateRate = MinAffiliateRate.Off
-    ,hasMovieFlag: HasMovieFlag = HasMovieAll
-    ,pamphletFlag: PamphletFlag = PamphletAll
-    ,appointDeliveryDateFlag: AppointDeliveryDateFlag = AppointDeliveryDateAll
+    ,hasMovieFlag: HasMovieFlag = HasMovieFlag.All
+    ,pamphletFlag: PamphletFlag = PamphletFlag.All
+    ,appointDeliveryDateFlag: AppointDeliveryDateFlag = AppointDeliveryDateFlag.All
   )(
     implicit https: RwsHttps
   ): Validation[ApiError, ItemSearchResult] = {
@@ -50,7 +50,7 @@ object ItemSearch {
       ,minPrice
       ,maxPrice
       ,availability
-      ,field
+      ,searchField
       ,carrier
       ,imageFlag
       ,orFlag

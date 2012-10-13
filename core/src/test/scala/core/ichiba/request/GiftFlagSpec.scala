@@ -6,10 +6,12 @@ class GiftFlagSpec extends Specification { def is =
 
   "GiftFlag"                                                                                        ^
     "param"                                                                                         ^
-      "GiftAllの場合Seq()が返る"                                                                    ! e1^
-      "OnlyAllowGiftの場合Seq(\"giftFlag\" -> \"1\")が返る"                                         ! e2^
+      "Allの場合Seq()が返る"                                                                        ! e1^
+      "OnlyAcceptの場合Seq(\"giftFlag\" -> \"1\")が返る"                                            ! e2^
                                                                                                     end
 
-  def e1 = GiftAll.param must beEmpty
-  def e2 = OnlyAllowGift.param must equalTo(Seq("giftFlag" -> "1"))
+  import GiftFlag._
+
+  def e1 = All.param must beEmpty
+  def e2 = OnlyAccept.param must equalTo(Seq("giftFlag" -> "1"))
 }

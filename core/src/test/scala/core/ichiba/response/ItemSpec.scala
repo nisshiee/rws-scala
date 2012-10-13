@@ -34,6 +34,9 @@ class ItemSpec extends Specification with DataTables { def is =
       "不正なパラメータを含む場合、JsonParseErrorのfailureを返す"                                   ! (e12_1 and e12_2 and e12_3 and e12_4)^
                                                                                                     end
 
+  import AsurakuArea._
+  import OverseaArea._
+
   def e1 =
     "input "       || "result"       |
     ""             !! None           |

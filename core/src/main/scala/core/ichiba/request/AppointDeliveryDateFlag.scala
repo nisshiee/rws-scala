@@ -3,15 +3,22 @@ package rwsscala.ichiba
 import rwsscala.util._
 
 sealed trait AppointDeliveryDateFlag extends Parameter {
+
+  import AppointDeliveryDateFlag._
+
   def int: Int
   def param = this match {
-    case AppointDeliveryDateAll => Seq()
+    case All => Seq()
     case a => Seq("appointDeliveryDateFlag" -> a.int.toString)
   }
 }
-case object AppointDeliveryDateAll extends AppointDeliveryDateFlag {
-  val int = 0
-}
-case object OnlyAllowAppointDeliveryDate extends AppointDeliveryDateFlag {
-  val int = 1
+
+object AppointDeliveryDateFlag {
+
+  case object All extends AppointDeliveryDateFlag {
+    val int = 0
+  }
+  case object OnlyAccept extends AppointDeliveryDateFlag {
+    val int = 1
+  }
 }

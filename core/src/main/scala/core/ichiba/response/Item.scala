@@ -41,6 +41,8 @@ class Item (
   }
 
   override def hashCode: Int = code.hashCode
+
+  override def toString: String = name
 }
 
 object Item {

@@ -18,6 +18,8 @@ class ItemSearchSpec extends Specification with DataTables { def is =
       "400,401,403,503,500で、bodyの形式が正常の場合、codeに応じたBadResponseがsuccessで返る"       ! e7^
                                                                                                     end
 
+  import Carrier._
+
   val appId = "1234567890"
   val basicParams = Map (
      "applicationId" -> appId

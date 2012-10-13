@@ -18,6 +18,10 @@ class ItemSearchResultSpec extends Specification { def is =
       "carrier, itemsいずれかのparseに失敗した場合、JsonParseErrorをfailureで返す"                  ! (e5_1 and e5_2)^
                                                                                                     end
 
+  import AsurakuArea._
+  import OverseaArea._
+  import Carrier._
+
   def e1 = ItemSearchResult.itemsVld(List()) must equalTo(List().success)
 
   val validItemJson = new ItemJson (
