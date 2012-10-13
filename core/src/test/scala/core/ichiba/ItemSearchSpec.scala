@@ -5,14 +5,14 @@ import rwsscala.httptrait._
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
 
-class IchibaItemSearchSpec extends Specification with DataTables { def is =
+class ItemSearchSpec extends Specification with DataTables { def is =
 
-  "IchibaItemSearch"                                                                                ^
+  "ItemSearch"                                                                                      ^
     "apply"                                                                                         ^
       "RwsHttps実装がConnectionErrorを返した場合、ConnectionError.failureが返る"                    ! e1^
       "200で返ってもJSONからASTへの変換が不正の場合はJsonParseErrorがfailureで返る"                 ! e2^
       "200で返ってもASTからResultモデルへの変換が不正の場合はJsonParseErrorがfailureで返る"         ! e3^
-      "200で返り、Resultモデルまで変換が成功した場合はIchibaItemSearchResultがsuccessで返る"        ! e4^
+      "200で返り、Resultモデルまで変換が成功した場合はItemSearchResultがsuccessで返る"              ! e4^
       "200,400,401,403,503,500以外が返された場合はUnknownResponseがfailureで返る"                   ! e5^
       "200以外でbodyが規定の形式でない場合はUnknownResponseがfailureで返る"                         ! e6^
       "400,401,403,503,500で、bodyの形式が正常の場合、codeに応じたBadResponseがsuccessで返る"       ! e7^
@@ -23,12 +23,12 @@ class IchibaItemSearchSpec extends Specification with DataTables { def is =
      "applicationId" -> appId
     ,"keyword" -> "test"
   )
-  def basicApi(implicit https: RwsHttps): Validation[ApiError, IchibaItemSearchResult] =
-    IchibaItemSearch(appId, IchibaItemSearchBase | "test" |||)
+  def basicApi(implicit https: RwsHttps): Validation[ApiError, ItemSearchResult] =
+    ItemSearch(appId, ItemSearchBase | "test" |||)
   def basicTest[A] (
      responseCode: Int
     ,responseBody: String
-  )(check: Validation[ApiError, IchibaItemSearchResult] => A): A = {
+  )(check: Validation[ApiError, ItemSearchResult] => A): A = {
     implicit val https = FakeIchibaItemSearchHttps (
        basicParams
       ,Response(responseCode, responseBody).success
@@ -74,7 +74,7 @@ class IchibaItemSearchSpec extends Specification with DataTables { def is =
   "Items": []
 }""") {
     case Success (
-      IchibaItemSearchResult (0, 1, 0, 0, 0, PC, 0, Nil)
+      ItemSearchResult (0, 1, 0, 0, 0, PC, 0, Nil)
     ) => ok
     case _ => ko
   }

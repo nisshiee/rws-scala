@@ -4,20 +4,20 @@ import rwsscala._
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
 
-class IchibaItemSearchResultJsonSpec extends Specification with DataTables { def is =
+class ItemSearchResultJsonSpec extends Specification with DataTables { def is =
 
-  "IchibaItemSearchResultJson"                                                                      ^
+  "ItemSearchResultJson"                                                                            ^
     "parseVld"                                                                                      ^
       "JSON Syntaxに従っていない場合はJsonParseErrorをfailureで返す"                                ! e1^
       "JSON構造が想定外の場合はJsonParseErrorをfailureで返す"                                       ! (e2_1 and e2_2 and e2_3 and e2_4)^
-      "正しい構造のJSONの場合、parse結果のIchibaItemSearchResultJsonをsuccessで返す"                ! e3^
+      "正しい構造のJSONの場合、parse結果のItemSearchResultJsonをsuccessで返す"                      ! e3^
                                                                                                     end
 
   def e1 =
     "input"              || "result"  |
     "123abc"             !! "faulure" |
     """{ "aaa", 123""" !! "faulure" |> { (input, _) =>
-      IchibaItemSearchResultJson.parseVld(input).toEither must beLeft.like {
+      ItemSearchResultJson.parseVld(input).toEither must beLeft.like {
         case JsonParseError(msg) => msg must contain("syntax")
       }
     }
@@ -26,7 +26,7 @@ class IchibaItemSearchResultJsonSpec extends Specification with DataTables { def
     "input"              || "result"  |
     """[1, 2, 3]"""      !! "faulure" |
     """{ "aaa", 123 }""" !! "faulure" |> { (input, _) =>
-      IchibaItemSearchResultJson.parseVld(input).toEither must beLeft.like {
+      ItemSearchResultJson.parseVld(input).toEither must beLeft.like {
         case JsonParseError(msg) => msg must contain("structure")
       }
     }
@@ -40,7 +40,7 @@ class IchibaItemSearchResultJsonSpec extends Specification with DataTables { def
   "hits": 30,
   "carrier": 0
 }""" // "pageCount" が足りない
-    IchibaItemSearchResultJson.parseVld(input).toEither must beLeft.like {
+    ItemSearchResultJson.parseVld(input).toEither must beLeft.like {
       case JsonParseError(msg) => msg must contain("structure")
     }
   }
@@ -55,7 +55,7 @@ class IchibaItemSearchResultJsonSpec extends Specification with DataTables { def
   "carrier": 0,
   "pageCount": 2
 }""" // "count" の型がintでない
-    IchibaItemSearchResultJson.parseVld(input).toEither must beLeft.like {
+    ItemSearchResultJson.parseVld(input).toEither must beLeft.like {
       case JsonParseError(msg) => msg must contain("structure")
     }
   }
@@ -77,7 +77,7 @@ class IchibaItemSearchResultJsonSpec extends Specification with DataTables { def
     }
   ]
 }""" // "Items" のメンバが足りない
-    IchibaItemSearchResultJson.parseVld(input).toEither must beLeft.like {
+    ItemSearchResultJson.parseVld(input).toEither must beLeft.like {
       case JsonParseError(msg) => msg must contain("structure")
     }
   }
@@ -139,8 +139,8 @@ class IchibaItemSearchResultJsonSpec extends Specification with DataTables { def
     }
   ]
 }"""
-    IchibaItemSearchResultJson.parseVld(input).toEither must beRight.like {
-      case IchibaItemSearchResultJson(36, 1, 1, 30, 30, 0, 2, i :: Nil) =>
+    ItemSearchResultJson.parseVld(input).toEither must beRight.like {
+      case ItemSearchResultJson(36, 1, 1, 30, 30, 0, 2, i :: Nil) =>
         (i.itemName must equalTo("商品名")) and
         (i.catchcopy must equalTo("キャッチコピー")) and
         (i.itemCode must equalTo("test:10000000")) and

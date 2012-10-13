@@ -5,11 +5,11 @@ import rwsscala.httptrait._
 import rwsscala.util._
 import scalaz._, Scalaz._
 
-object IchibaItemSearch {
+object ItemSearch {
 
   def apply(
      applicationId: ApplicationId
-    ,base: IchibaItemSearchBase
+    ,base: ItemSearchBase
     ,affiliateId: AffiliateId = AffiliateId(None)
     ,shopCode: ShopCode = ShopCode.Off
     ,hit: Hit = 30
@@ -38,7 +38,7 @@ object IchibaItemSearch {
     ,appointDeliveryDateFlag: AppointDeliveryDateFlag = AppointDeliveryDateAll
   )(
     implicit https: RwsHttps
-  ): Validation[ApiError, IchibaItemSearchResult] = {
+  ): Validation[ApiError, ItemSearchResult] = {
     val params = Seq(
        applicationId
       ,base
@@ -74,12 +74,12 @@ object IchibaItemSearch {
     val res = https.get("app.rakuten.co.jp", "/services/api/IchibaItem/Search/20120723", params)
     res flatMap {
       case Response(200, jsonStr) => for {
-        jsonModel <- IchibaItemSearchResultJson.parseVld(jsonStr)
-        result <- IchibaItemSearchResult.parseVld(jsonModel)
+        jsonModel <- ItemSearchResultJson.parseVld(jsonStr)
+        result <- ItemSearchResult.parseVld(jsonModel)
       } yield result
       case Response(code, jsonStr) => for {
         jsonModel <- ErrorResponse.parseOpt(jsonStr).toSuccess[ApiError](UnknownResponse)
-        result <- BadResponse.code2Apply(code)(jsonModel.error, jsonModel.description).failure[IchibaItemSearchResult]
+        result <- BadResponse.code2Apply(code)(jsonModel.error, jsonModel.description).failure[ItemSearchResult]
       } yield result
     }
   }

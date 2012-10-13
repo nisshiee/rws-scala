@@ -3,7 +3,7 @@ package rwsscala.ichiba
 import rwsscala._
 import scalaz._, Scalaz._
 
-case class IchibaItemSearchResult (
+case class ItemSearchResult (
    count: Int
   ,page: Int
   ,first: Int
@@ -14,17 +14,17 @@ case class IchibaItemSearchResult (
   ,items: List[Item]
 )
 
-object IchibaItemSearchResult {
+object ItemSearchResult {
 
   def itemsVld(json: List[ItemJson]): Validation[ApiError, List[Item]] = {
     type Vld[A] = Validation[ApiError, A]
     (json map Item.parseVld).sequence[Vld, Item]
   }
 
-  def parseVld(json: IchibaItemSearchResultJson): Validation[ApiError, IchibaItemSearchResult] = for {
+  def parseVld(json: ItemSearchResultJson): Validation[ApiError, ItemSearchResult] = for {
     carrier <- Carrier.parseVld(json.carrier)
     items <- itemsVld(json.items)
-   } yield IchibaItemSearchResult(
+   } yield ItemSearchResult(
      json.count
     ,json.page
     ,json.first

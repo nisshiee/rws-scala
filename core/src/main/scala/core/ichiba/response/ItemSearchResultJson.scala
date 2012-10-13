@@ -4,7 +4,7 @@ import rwsscala._
 import scalaz._, Scalaz._
 import net.liftweb.json._
 
-case class IchibaItemSearchResultJson (
+case class ItemSearchResultJson (
    count: Int
   ,page: Int
   ,first: Int
@@ -15,15 +15,15 @@ case class IchibaItemSearchResultJson (
   ,items: List[ItemJson]
 )
 
-object IchibaItemSearchResultJson {
+object ItemSearchResultJson {
 
-  def parseVld(jsonStr: String): Validation[ApiError, IchibaItemSearchResultJson] = {
+  def parseVld(jsonStr: String): Validation[ApiError, ItemSearchResultJson] = {
     implicit val format = DefaultFormats
     for {
       ast <- parseOpt(jsonStr).toSuccess[ApiError](JsonParseError("json syntax error"))
       arranged = ast.transform(ItemJson.itemTransformation)
       jsonModel <- arranged
-        .extractOpt[IchibaItemSearchResultJson]
+        .extractOpt[ItemSearchResultJson]
         .toSuccess[ApiError](JsonParseError("json structure error"))
     } yield jsonModel
   }

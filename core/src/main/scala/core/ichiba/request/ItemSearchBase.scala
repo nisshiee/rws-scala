@@ -5,7 +5,7 @@ import rwsscala.util._
 /**
  * keyword, genreId, itemCodeのいずれかがセットされている事が保証された、リクエストパラメータ
  */
-case class IchibaItemSearchBase private (
+case class ItemSearchBase private (
    keyword: Option[String]
   ,genreId: Option[Long]
   ,itemCode: Option[String]
@@ -18,7 +18,7 @@ case class IchibaItemSearchBase private (
 
 }
 
-object IchibaItemSearchBase {
+object ItemSearchBase {
 
   def |(keyword: String) = SomeK(keyword)
   def ||(genreId: Long): SomeKG = SomeKG(None, Some(genreId))
@@ -31,10 +31,10 @@ object IchibaItemSearchBase {
   val _i = ||| _
   val _itemCode = ||| _
 
-  case class SomeK private[IchibaItemSearchBase] (keyword: String) {
+  case class SomeK private[ItemSearchBase] (keyword: String) {
     def |(genreId: Long): SomeKG = SomeKG(Some(keyword), Some(genreId))
     def ||(itemCode: String) = SomeKGI(Some(keyword), None, Some(itemCode))
-    def ||| = IchibaItemSearchBase(Some(keyword), None, None)
+    def ||| = ItemSearchBase(Some(keyword), None, None)
 
     def _g(genreId: Long): SomeKG = |(genreId)
     def _genreId(genreId: Long): SomeKG = |(genreId)
@@ -51,12 +51,12 @@ object IchibaItemSearchBase {
     val _itemCode = || _
   }
 
-  case class SomeKG private[IchibaItemSearchBase] (
+  case class SomeKG private[ItemSearchBase] (
      keyword: Option[String]
     ,genreId: Option[Long]
   ) {
     def |(itemCode: String) = SomeKGI(keyword, genreId, Some(itemCode))
-    def || = IchibaItemSearchBase(keyword, genreId, None)
+    def || = ItemSearchBase(keyword, genreId, None)
 
     val _i = | _
     val _itemCode = | _
@@ -67,11 +67,11 @@ object IchibaItemSearchBase {
     val _i = | _
     val _itemCode = | _
   }
-  case class SomeKGI private[IchibaItemSearchBase] (
+  case class SomeKGI private[ItemSearchBase] (
      keyword: Option[String]
     ,genreId: Option[Long]
     ,itemCode: Option[String]
   ) {
-    def | = IchibaItemSearchBase(keyword, genreId, itemCode)
+    def | = ItemSearchBase(keyword, genreId, itemCode)
   }
 }

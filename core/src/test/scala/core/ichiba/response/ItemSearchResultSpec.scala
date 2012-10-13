@@ -5,9 +5,9 @@ import org.specs2._, matcher.MatchResult
 import scalaz._, Scalaz._
 import org.scala_tools.time.Imports._
 
-class IchibaItemSearchResultSpec extends Specification { def is =
+class ItemSearchResultSpec extends Specification { def is =
 
-  "IchibaItemSearchResult"                                                                          ^
+  "ItemSearchResult"                                                                                ^
     "itemsVld"                                                                                      ^
       "空Listの場合は空Listをsuccessで返す"                                                         ! e1^
       "全て正常なItemJsonの場合、全てを変換したList[Item]をsuccessで返す"                           ! e2^
@@ -18,7 +18,7 @@ class IchibaItemSearchResultSpec extends Specification { def is =
       "carrier, itemsいずれかのparseに失敗した場合、JsonParseErrorをfailureで返す"                  ! (e5_1 and e5_2)^
                                                                                                     end
 
-  def e1 = IchibaItemSearchResult.itemsVld(List()) must equalTo(List().success)
+  def e1 = ItemSearchResult.itemsVld(List()) must equalTo(List().success)
 
   val validItemJson = new ItemJson (
      "itemName"
@@ -88,7 +88,7 @@ class IchibaItemSearchResultSpec extends Specification { def is =
 
   def e2 = {
     val input = List(validItemJson, validItemJson, validItemJson)
-    IchibaItemSearchResult.itemsVld(input).toEither must beRight.like { case l: List[_] =>
+    ItemSearchResult.itemsVld(input).toEither must beRight.like { case l: List[_] =>
       l.map(validItemMatch).foldLeft[MatchResult[Any]](ok)(_ and _)
     }
   }
@@ -131,13 +131,13 @@ class IchibaItemSearchResultSpec extends Specification { def is =
 
   def e3 = {
     val input = List(validItemJson, invalidItemJson, validItemJson)
-    IchibaItemSearchResult.itemsVld(input).toEither must beLeft.like {
+    ItemSearchResult.itemsVld(input).toEither must beLeft.like {
       case JsonParseError(msg) => msg must contain("itemPrice")
     }
   }
 
   def e4 = {
-    val input = IchibaItemSearchResultJson(
+    val input = ItemSearchResultJson(
        37
       ,1
       ,1
@@ -147,7 +147,7 @@ class IchibaItemSearchResultSpec extends Specification { def is =
       ,2
       ,List(validItemJson, validItemJson)
     )
-    IchibaItemSearchResult.parseVld(input).toEither must beRight.like { case r: IchibaItemSearchResult =>
+    ItemSearchResult.parseVld(input).toEither must beRight.like { case r: ItemSearchResult =>
       (r.count must equalTo(37)) and
       (r.page must equalTo(1)) and
       (r.first must equalTo(1)) and
@@ -160,7 +160,7 @@ class IchibaItemSearchResultSpec extends Specification { def is =
   }
 
   def e5_1 = {
-    val input = IchibaItemSearchResultJson(
+    val input = ItemSearchResultJson(
        37
       ,1
       ,1
@@ -170,13 +170,13 @@ class IchibaItemSearchResultSpec extends Specification { def is =
       ,2
       ,List(validItemJson, validItemJson)
     )
-    IchibaItemSearchResult.parseVld(input).toEither must beLeft.like {
+    ItemSearchResult.parseVld(input).toEither must beLeft.like {
       case JsonParseError(msg) => msg must contain("carrier")
     }
   }
 
   def e5_2 = {
-    val input = IchibaItemSearchResultJson(
+    val input = ItemSearchResultJson(
        37
       ,1
       ,1
@@ -186,7 +186,7 @@ class IchibaItemSearchResultSpec extends Specification { def is =
       ,2
       ,List(invalidItemJson, validItemJson)
     )
-    IchibaItemSearchResult.parseVld(input).toEither must beLeft.like {
+    ItemSearchResult.parseVld(input).toEither must beLeft.like {
       case JsonParseError(msg) => msg must contain("itemPrice")
     }
 }
