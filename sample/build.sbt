@@ -19,7 +19,8 @@ testOptions in (Test, test) += Tests.Argument("console", "html", "junitxml")
 
 initialCommands := """
 import dispatch._
-import rwsscala._
+import rwsscala._, Implicits._
+import rwsscala.ichiba._
 import rwsscala.dispatch._
 implicit val https = DispatchHttps
 """
