@@ -1,8 +1,8 @@
 name := "rws-scala-dispatch"
 
-organization := "jp.co.rakuten.webservice"
+organization := "org.nisshiee"
 
-version := "1.0.0-SNAPSHOT"
+version := "0.0.1-SNAPSHOT"
 
 scalaVersion := "2.9.2"
 
@@ -23,5 +23,5 @@ testOptions in (Test, test) += Tests.Argument("console", "html", "junitxml")
 
 initialCommands := """
 import org.scala_tools.time.Imports._
-import jp.co.rakuten.webservice.dispatch._
+import rwsscala.dispatch._
 """

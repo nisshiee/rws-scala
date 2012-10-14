@@ -1,6 +1,6 @@
-package jp.co.rakuten.webservice.httptrait
+package rwsscala.httptrait
 
-import jp.co.rakuten.webservice.ApiError
+import rwsscala.ApiError
 
 case class Response(code: Int, body: String)
 
