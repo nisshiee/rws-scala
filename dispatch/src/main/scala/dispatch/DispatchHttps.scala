@@ -19,4 +19,7 @@ object DispatchHttps extends RwsHttps {
     Http(:/(domain).secure / path <<? params > AsResponse).either.left.map {
       case e: Throwable => ConnectionError(e.getMessage)
     }() |> (_.disjunction.validation)
+
+  def shutdown() = Http.shutdown
+
 }
