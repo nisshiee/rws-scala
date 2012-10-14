@@ -10,7 +10,7 @@ object ItemSearch {
   def apply(
      applicationId: ApplicationId
     ,base: ItemSearchBase
-    ,affiliateId: AffiliateId = AffiliateId(None)
+    ,affiliateId: AffiliateId = None
     ,shopCode: ShopCode = ShopCode.Off
     ,hit: Hit = 30
     ,page: Page = 1

@@ -11,6 +11,10 @@ class AffiliateIdSpec extends Specification { def is =
                                                                                 p^
     "str2affiliateId"                                                           ^
       "AffiliateId(Some(value))にimplicit conversionされる"                     ! e3^
+                                                                                p^
+    "strOpt2affiliateId"                                                        ^
+      "Some[String]がAffiliateId(Some(value))にimplicit conversionされる"       ! e4^
+      "NoneがAffiliateId(None)にimplicit conversionされる"                      ! e5^
                                                                                 end
 
   def e1 = AffiliateId(Some("affid")).param must equalTo(Seq("affiliateId" -> "affid"))
@@ -21,4 +25,13 @@ class AffiliateIdSpec extends Specification { def is =
     aff must equalTo(AffiliateId(Some("affid")))
   }
 
+  def e4 = {
+    val aff: AffiliateId = Some("affid")
+    aff must equalTo(AffiliateId(Some("affid")))
+  }
+
+  def e5 = {
+    val aff: AffiliateId = None
+    aff must equalTo(AffiliateId(None))
+  }
 }
