@@ -8,9 +8,7 @@ import scalaz._, Scalaz._
 object ItemSearch {
 
   def apply(
-     applicationId: ApplicationId
-    ,base: ItemSearchBase
-    ,affiliateId: AffiliateId = AffiliateId(None)
+     base: ItemSearchBase
     ,shopCode: ShopCode = ShopCode.Off
     ,hit: Hit = 30
     ,page: Page = 1
@@ -37,12 +35,14 @@ object ItemSearch {
     ,pamphletFlag: PamphletFlag = PamphletFlag.All
     ,appointDeliveryDateFlag: AppointDeliveryDateFlag = AppointDeliveryDateFlag.All
   )(
-    implicit https: RwsHttps
+    implicit
+     applicationDetail: ApplicationDetail
+    ,https: RwsHttps
   ): Validation[ApiError, ItemSearchResult] = {
     val params = Seq(
-       applicationId
+       applicationDetail.applicationId
       ,base
-      ,affiliateId
+      ,applicationDetail.affiliateId
       ,shopCode
       ,hit
       ,page

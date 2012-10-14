@@ -21,12 +21,13 @@ class ItemSearchSpec extends Specification with DataTables { def is =
   import Carrier._
 
   val appId = "1234567890"
+  implicit val applicationDetail = ApplicationDetail(appId)
   val basicParams = Map (
      "applicationId" -> appId
     ,"keyword" -> "test"
   )
   def basicApi(implicit https: RwsHttps): Validation[ApiError, ItemSearchResult] =
-    ItemSearch(appId, ItemSearchBase | "test" |||)
+    ItemSearch(ItemSearchBase | "test" |||)
   def basicTest[A] (
      responseCode: Int
     ,responseBody: String
