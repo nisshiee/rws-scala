@@ -2,7 +2,7 @@ name := "rws-scala"
 
 organization := "org.nisshiee"
 
-version := "0.0.1-RC1"
+version := "0.0.1-SNAPSHOT"
 
 scalaVersion := "2.9.2"
 
