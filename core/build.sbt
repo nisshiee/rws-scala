@@ -6,11 +6,6 @@ version := "0.0.1-SNAPSHOT"
 
 scalaVersion := "2.9.2"
 
-resolvers ++= Seq(
-   "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
-  ,"Sonatype releases" at "http://oss.sonatype.org/content/repositories/releases/"
-)
-
 libraryDependencies ++= Seq(
    "org.scalaz" %% "scalaz-core" % "7.0.0-M3"
   ,"org.scala-tools.time" % "time_2.9.1" % "0.5"
