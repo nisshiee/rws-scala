@@ -48,6 +48,11 @@ pomExtra := (
     </developer>
   </developers>)
 
+scaladocOptions in (Compile, doc) <++= (baseDirectory in LocalProject("dispatch")).map {
+  bd => Seq("-sourcepath", bd.getAbsolutePath,
+            "-doc-source-url", "https://github.com/nisshiee/rws-scala/blob/master/dispatch€{FILE_PATH}.scala")
+}
+
 testOptions in (Test, test) += Tests.Argument("console", "html", "junitxml")
 
 initialCommands := """
