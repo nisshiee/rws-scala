@@ -2,7 +2,7 @@ name := "rws-scala-sample"
 
 organization := "nisshiee.org"
 
-version := "0.0.1-RC1"
+version := "0.0.1-RC2"
 
 scalaVersion := "2.9.2"
 
