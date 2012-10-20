@@ -2,7 +2,7 @@ name := "rws-scala-dispatch"
 
 organization := "org.nisshiee"
 
-version := "0.1.0-SNAPSHOT"
+version := "0.1.0"
 
 scalaVersion := "2.9.2"
 
