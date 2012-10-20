@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rws-scala by nisshiee</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/nisshiee/rws-scala">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/nisshiee/rws-scala/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/nisshiee/rws-scala/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>rws-scala</h1>
+          <p></p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/nisshiee">nisshiee</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>rws-scala: Rakuten Web Service Scala Wrapper</h1>
+
+<p><a href="http://travis-ci.org/nisshiee/rws-scala"><img src="https://secure.travis-ci.org/nisshiee/rws-scala.png?branch=master" alt="Build Status"></a></p>
+
+<p>rws-scalaは、Scalaアプリケーションから楽天が提供しているAPIに簡単にアクセスすることができる関数群を提供します。</p>
+
+<h2>動作要件</h2>
+
+<ul>
+<li>Scala 2.9.2</li>
+</ul><h2>使い方</h2>
+
+<h3>準備</h3>
+
+<ol>
+<li>
+<a href="http://webservice.rakuten.co.jp/">楽天ウェブサービスのドキュメントページ</a>にて、アプリ登録を行ってください。</li>
+<li>sbtプロジェクトを用意し、以下の設定をbuild.sbtに記述します。</li>
+</ol><div class="highlight"><pre><span class="n">scalaVersion</span> <span class="o">:=</span> <span class="s">"2.9.2"</span>
+
+<span class="n">libraryDependencies</span> <span class="o">++=</span> <span class="nc">Seq</span><span class="o">(</span>
+   <span class="s">"org.nisshiee"</span> <span class="o">%%</span> <span class="s">"rws-scala"</span> <span class="o">%</span> <span class="s">"0.1.0"</span>
+  <span class="o">,</span><span class="s">"org.nisshiee"</span> <span class="o">%%</span> <span class="s">"rws-scala-dispatch"</span> <span class="o">%</span> <span class="s">"0.1.0"</span>
+<span class="o">)</span>
+</pre></div>
+
+<h3>コード記述</h3>
+
+<p>例:</p>
+
+<div class="highlight"><pre><span class="c1">// コアパッケージのimport</span>
+<span class="k">import</span> <span class="nn">rwsscala._</span><span class="o">,</span> <span class="n">rwsscala</span><span class="o">.</span><span class="n">ichiba</span><span class="o">.</span><span class="k">_</span>
+
+<span class="k">object</span> <span class="nc">MyFirstRws</span> <span class="k">extends</span> <span class="nc">App</span> <span class="o">{</span>
+
+  <span class="c1">// 使用するHTTP実装をimplicit valueとして保持</span>
+  <span class="k">implicit</span> <span class="k">val</span> <span class="n">https</span> <span class="k">=</span> <span class="n">rwsscala</span><span class="o">.</span><span class="n">dispatch</span><span class="o">.</span><span class="nc">DispatchHttps</span>
+
+  <span class="c1">// あなたのアプリケーション情報をimplicit valueとして保持</span>
+  <span class="k">implicit</span> <span class="k">val</span> <span class="n">app</span> <span class="k">=</span> <span class="nc">ApplicationDetail</span><span class="o">(</span><span class="s">"your applicationId"</span><span class="o">,</span> <span class="s">"your affiliateId"</span><span class="o">)</span>
+
+  <span class="c1">// 市場商品検索APIで「うどん」を検索</span>
+  <span class="k">val</span> <span class="n">result</span> <span class="k">=</span> <span class="nc">ItemSearch</span><span class="o">(</span><span class="nc">ItemSearchBase</span> <span class="o">|</span> <span class="s">"うどん"</span> <span class="o">|||)</span>
+
+  <span class="c1">// 成功したら商品名リストを、失敗したらエラー内容を標準出力に表示</span>
+  <span class="n">result</span><span class="o">.</span><span class="n">fold</span><span class="o">(</span>
+     <span class="o">{</span> <span class="n">e</span> <span class="k">=&gt;</span> <span class="n">println</span><span class="o">(</span><span class="n">e</span><span class="o">)</span> <span class="o">}</span>
+    <span class="o">,{</span> <span class="k">case</span> <span class="nc">ItemSearchResult</span><span class="o">(</span><span class="k">_</span><span class="o">,</span> <span class="k">_</span><span class="o">,</span> <span class="k">_</span><span class="o">,</span> <span class="k">_</span><span class="o">,</span> <span class="k">_</span><span class="o">,</span> <span class="k">_</span><span class="o">,</span> <span class="k">_</span><span class="o">,</span> <span class="n">items</span><span class="o">)</span> <span class="k">=&gt;</span> <span class="n">items</span><span class="o">.</span><span class="n">map</span><span class="o">(</span><span class="k">_</span><span class="o">.</span><span class="n">name</span><span class="o">).</span><span class="n">foreach</span><span class="o">(</span><span class="n">println</span><span class="o">)</span> <span class="o">}</span>
+  <span class="o">)</span>
+
+  <span class="c1">// HTTP実装にDispatchHttpsを使用した場合は、通信スレッドをシャットダウンする必要があります</span>
+  <span class="n">https</span><span class="o">.</span><span class="n">shutdown</span>
+<span class="o">}</span>
+</pre></div>
+
+<p>詳細はWikiに記載していく予定です。</p>
+
+<h2>公開APIドキュメント</h2>
+
+<ul>
+<li><a href="http://webservice.rakuten.co.jp/">http://webservice.rakuten.co.jp/</a></li>
+</ul><h2>ライセンス</h2>
+
+<ul>
+<li>MIT License</li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
