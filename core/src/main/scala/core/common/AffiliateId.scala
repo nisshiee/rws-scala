@@ -2,7 +2,7 @@ package rwsscala
 
 import rwsscala.util._
 
-case class AffiliateId(opt: Option[String]) extends Parameter {
+case class AffiliateId(opt: Option[String]) {
   def param = opt.toSeq map { "affiliateId" -> _ }
 }
 

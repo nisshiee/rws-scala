@@ -3,7 +3,7 @@ package rwsscala.ichiba
 import rwsscala.util._
 import scalaz._, Scalaz._
 
-sealed trait MaxAffiliateRate extends Parameter
+sealed trait MaxAffiliateRate { def param: Seq[(String, String)] }
 
 object MaxAffiliateRate {
 

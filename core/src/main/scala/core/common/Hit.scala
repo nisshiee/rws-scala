@@ -1,21 +1,14 @@
 package rwsscala
 
-import rwsscala.util._
 import scalaz._, Scalaz._
 
-sealed trait Hit extends Parameter {
+sealed trait Hit {
   def value: Int
 }
 
 object Hit {
 
-  private case class Impl(value: Int) extends Hit {
-
-    def param = value match {
-      case 30 => Seq()
-      case v => Seq("hits" -> v.toString)
-    }
-  }
+  private case class Impl(value: Int) extends Hit
 
   def apply(value: Int): Hit = value match {
     case v if v < 1 => Impl(1)

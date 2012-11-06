@@ -3,6 +3,8 @@ package rwsscala.ichiba
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
 
+import rwsscala.util._
+
 class PointRateSpec extends Specification with DataTables { def is =
 
   "PointRate"                                                                                       ^
@@ -32,6 +34,8 @@ class PointRateSpec extends Specification with DataTables { def is =
       "11以上の場合、10をvalueに保持するPointRateオブジェクトが返る"                                ! e13^
       "PointRate.AnyRateをunapplyするとNoneが返る"                                                  ! e14^
                                                                                                     end
+
+  import ItemSearchParameters._
 
   def e1 =
     "input" | "output" |
@@ -75,9 +79,9 @@ class PointRateSpec extends Specification with DataTables { def is =
     case _ => ok
   }
 
-  def e6 = PointRate.Off.param must beEmpty
+  def e6 = (PointRate.Off: PointRate).param must beEmpty
 
-  def e7 = PointRate.AnyRate.param must equalTo(Seq("pointRateFlag" -> "1"))
+  def e7 = (PointRate.AnyRate: PointRate).param must equalTo(Seq("pointRateFlag" -> "1"))
 
   def e8 =
     "input" | "output" |

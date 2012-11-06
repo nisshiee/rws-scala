@@ -1,6 +1,7 @@
 package rwsscala.ichiba
 
 import rwsscala._
+import rwsscala.util._
 import scalaz._, Scalaz._
 
 case class ItemSearchResult (
@@ -21,8 +22,10 @@ object ItemSearchResult {
     (json map Item.parseVld).sequence[Vld, Item]
   }
 
+  import ItemSearchCaseCodes._
+
   def parseVld(json: ItemSearchResultJson): Validation[ApiError, ItemSearchResult] = for {
-    carrier <- Carrier.parseVld(json.carrier)
+    carrier <- fromCaseCode[Int, Carrier](json.carrier) toSuccess JsonParseError("carrier must be in 0, 1, 2")
     items <- itemsVld(json.items)
    } yield ItemSearchResult(
      json.count

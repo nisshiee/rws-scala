@@ -2,6 +2,7 @@ package rwsscala.ichiba
 
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
+import rwsscala.util._
 import ItemSearchBase._
 
 class ItemSearchBaseSpec extends Specification with DataTables { def is =
@@ -96,7 +97,7 @@ class ItemSearchBaseSpec extends Specification with DataTables { def is =
   }
 
   def e13 =
-    "base"                                                | "result"                                                                |
+    "base"                                          | "result"                                                                |
     (ItemSearchBase | "test1" | 123456 | "test2" |) ! Seq("keyword" -> "test1", "genreId" -> "123456", "itemCode" -> "test2") |
     (ItemSearchBase | "test1" | 123456 ||)          ! Seq("keyword" -> "test1", "genreId" -> "123456")                        |
     (ItemSearchBase | "test1" || "test2" |)         ! Seq("keyword" -> "test1", "itemCode" -> "test2")                        |
@@ -104,6 +105,8 @@ class ItemSearchBaseSpec extends Specification with DataTables { def is =
     (ItemSearchBase | "test1" |||)                  ! Seq("keyword" -> "test1")                                               |
     (ItemSearchBase || 123456 ||)                   ! Seq("genreId" -> "123456")                                              |
     (ItemSearchBase ||| "test2" |)                  ! Seq("itemCode" -> "test2")                                              |> {
-      (base, result) => base.param must equalTo(result)
+      (base, result) =>
+        import ItemSearchParameters._
+        base.param must equalTo(result)
     }
 }

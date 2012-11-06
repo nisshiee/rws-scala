@@ -2,6 +2,7 @@ package rwsscala.ichiba
 
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
+import rwsscala.util._
 
 class ShopCodeSpec extends Specification with DataTables { def is =
 
@@ -36,13 +37,17 @@ class ShopCodeSpec extends Specification with DataTables { def is =
     case _ => ok
   }
 
-  def e3 = ShopCode.Off.param must beEmpty
+  def e3 = {
+    import ItemSearchParameters._
+    (ShopCode.Off: ShopCode).param must beEmpty
+  }
 
 
   def e4 =
     "input"  || "output" |
     "test"   !! "test"   |
     "日本語" !! "日本語" |> { (input, output) =>
+      import ItemSearchParameters._
       ShopCode(input).param must equalTo(Seq("shopCode" -> output))
     }
 

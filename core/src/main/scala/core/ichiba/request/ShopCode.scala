@@ -1,21 +1,14 @@
 package rwsscala.ichiba
 
-import rwsscala.util._
 import scalaz._, Scalaz._
 
-sealed trait ShopCode extends Parameter
+sealed trait ShopCode
 
 object ShopCode {
 
-  case object Off extends ShopCode {
+  case object Off extends ShopCode
 
-    def param = Seq()
-  }
-
-  private case class On(value: String) extends ShopCode {
-
-    def param = Seq("shopCode" -> value)
-  }
+  private case class On(value: String) extends ShopCode
 
   def apply(value: String): ShopCode = On(value)
 

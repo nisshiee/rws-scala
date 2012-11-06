@@ -5,7 +5,7 @@ import rwsscala.httptrait._
 import rwsscala.util._
 import scalaz._, Scalaz._
 
-object ItemSearch {
+object ItemSearch extends ItemSearchParameters {
 
   def apply(
      base: ItemSearchBase
@@ -39,7 +39,7 @@ object ItemSearch {
      applicationDetail: ApplicationDetail
     ,https: RwsHttps
   ): Validation[ApiError, ItemSearchResult] = {
-    val params = Seq(
+    val params = Seq[{ def param: Seq[(String, String)] }](
        applicationDetail.applicationId
       ,base
       ,applicationDetail.affiliateId
@@ -69,7 +69,7 @@ object ItemSearch {
       ,pamphletFlag
       ,appointDeliveryDateFlag
     ).map {
-      p: Parameter => p.param
+      p: { def param: Seq[(String, String)] } => p.param
     }.flatten.toMap
     val res = https.get("app.rakuten.co.jp", "/services/api/IchibaItem/Search/20120723", params)
     res flatMap {

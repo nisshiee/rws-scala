@@ -6,6 +6,8 @@ version := "0.2.0-SNAPSHOT"
 
 scalaVersion := "2.9.2"
 
+scalacOptions += "-deprecation"
+
 libraryDependencies ++= Seq(
    "org.scalaz" %% "scalaz-core" % "7.0.0-M3"
   ,"org.scala-tools.time" % "time_2.9.1" % "0.5"

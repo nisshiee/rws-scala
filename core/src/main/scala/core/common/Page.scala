@@ -1,9 +1,8 @@
 package rwsscala
 
-import rwsscala.util._
 import scalaz._, Scalaz._
 
-sealed trait Page extends Parameter {
+sealed trait Page {
 
   def value: Int
 }

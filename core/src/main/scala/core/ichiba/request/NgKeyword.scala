@@ -1,21 +1,13 @@
 package rwsscala.ichiba
 
-import rwsscala.util._
 import scalaz._, Scalaz._
 
-sealed trait NgKeyword extends Parameter
+sealed trait NgKeyword
 
 object NgKeyword {
 
-  private case class On(value: String) extends NgKeyword {
-
-    def param = Seq("NGKeyword" -> value)
-  }
-
-  case object Off extends NgKeyword {
-
-    def param = Seq()
-  }
+  private case class On(value: String) extends NgKeyword
+  case object Off extends NgKeyword
 
   def apply(value: String): NgKeyword = On(value)
 

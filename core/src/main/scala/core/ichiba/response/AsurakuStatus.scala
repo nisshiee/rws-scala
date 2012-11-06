@@ -1,6 +1,7 @@
 package rwsscala.ichiba
 
 import rwsscala._
+import rwsscala.util._
 import org.scala_tools.time.Imports._
 import scalaz._, Scalaz._
 
@@ -25,6 +26,7 @@ object AsurakuStatus {
   }
 
   def parseAreasVld(str: String): Validation[ApiError, List[AsurakuArea]] = {
+    implicit val AreaCaseCode = ItemSearchCaseCodes.AsurakuAreaResponseCaseCode
     def error = JsonParseError("asurakuArea can't be parsed")
     if (str endsWith "/")
       error.failure
@@ -32,7 +34,7 @@ object AsurakuStatus {
       str
         .split('/')
         .toList
-        .map(AsurakuArea.parseOpt)
+        .map(fromCaseCode[String, AsurakuArea])
         .sequence[Option, AsurakuArea]
         .toSuccess(error)
   }

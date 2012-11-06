@@ -3,6 +3,8 @@ package rwsscala.ichiba
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
 
+import rwsscala.util._
+
 class NgKeywordSpec extends Specification with DataTables { def is =
 
   "NgKeyword"                                                                                       ^
@@ -21,6 +23,9 @@ class NgKeywordSpec extends Specification with DataTables { def is =
       "Option[String]からNgKeywordにapplyでimplicit conversionされる"                               ! e6^
                                                                                                     end
 
+  import NgKeyword._
+  import ItemSearchParameters._
+
   def e1 =
     "input"  || "output" |
     "test"   !! "test"   |
@@ -36,7 +41,7 @@ class NgKeywordSpec extends Specification with DataTables { def is =
     case _ => ok
   }
 
-  def e3 = NgKeyword.Off.param must beEmpty
+  def e3 = (Off: NgKeyword).param must beEmpty
 
   def e4 =
     "input"  || "output" |

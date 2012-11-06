@@ -2,6 +2,8 @@ package rwsscala.ichiba
 
 import org.specs2._
 
+import rwsscala.util._
+
 class CreditCardFlagSpec extends Specification { def is =
 
   "CreditCardFlag"                                                                                  ^
@@ -11,7 +13,8 @@ class CreditCardFlagSpec extends Specification { def is =
                                                                                                     end
 
   import CreditCardFlag._
+  import ItemSearchParameters._
 
-  def e1 = All.param must beEmpty
-  def e2 = OnlyAccept.param must equalTo(Seq("creditCardFlag" -> "1"))
+  def e1 = (All: CreditCardFlag).param must beEmpty
+  def e2 = (OnlyAccept: CreditCardFlag).param must equalTo(Seq("creditCardFlag" -> "1"))
 }

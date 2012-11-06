@@ -1,6 +1,7 @@
 package rwsscala.ichiba
 
 import org.specs2._
+import rwsscala.util._
 
 class PostageFlagSpec extends Specification { def is =
 
@@ -11,7 +12,8 @@ class PostageFlagSpec extends Specification { def is =
                                                                                                     end
 
   import PostageFlag._
+  import ItemSearchParameters._
 
-  def e1 = All.param must beEmpty
-  def e2 = OnlyInclude.param must equalTo(Seq("postageFlag" -> "1"))
+  def e1 = (All: PostageFlag).param must beEmpty
+  def e2 = (OnlyInclude: PostageFlag).param must equalTo(Seq("postageFlag" -> "1"))
 }

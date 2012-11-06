@@ -1,21 +1,13 @@
 package rwsscala.ichiba
 
-import rwsscala.util._
 import scalaz._, Scalaz._
 
-sealed trait MaxPrice extends Parameter
+sealed trait MaxPrice
 
 object MaxPrice {
 
-  private case class On(value: Long) extends MaxPrice {
-
-    def param = Seq("maxPrice" -> value.toString)
-  }
-
-  case object Off extends MaxPrice {
-
-    def param = Seq()
-  }
+  private case class On(value: Long) extends MaxPrice
+  case object Off extends MaxPrice
 
   def apply(value: Long): MaxPrice = value match {
     case v if v < 0L => On(0L)

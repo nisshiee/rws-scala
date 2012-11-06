@@ -2,6 +2,8 @@ package rwsscala
 
 import org.specs2._, matcher.DataTables
 
+import rwsscala.util._
+
 class PageSpec extends Specification with DataTables { def is =
 
   "Page"                                                                                            ^
@@ -57,6 +59,7 @@ class PageSpec extends Specification with DataTables { def is =
     "value" | "result" |
     1       ! Seq()    |
     -3      ! Seq()    |> { (value, result) =>
+      import rwsscala.ichiba.ItemSearchParameters._
       Page(value).param must beEmpty
     }
 
@@ -66,6 +69,7 @@ class PageSpec extends Specification with DataTables { def is =
     45      ! Seq("page" -> "45")  |
     100     ! Seq("page" -> "100") |
     101     ! Seq("page" -> "100") |> { (value, result) =>
+      import rwsscala.ichiba.ItemSearchParameters._
       Page(value).param must equalTo(result)
     }
 

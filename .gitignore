@@ -31,6 +31,9 @@ project/boot/
 # etags
 TAGS
 
+# ensime
+/.ensime*
+
 # switch to regexp syntax.
 #  syntax: regexp
 #  ^\.pc/

@@ -2,7 +2,7 @@ package rwsscala.ichiba
 
 import rwsscala.util._
 
-sealed trait AppointDeliveryDateFlag extends Parameter {
+sealed trait AppointDeliveryDateFlag {
 
   import AppointDeliveryDateFlag._
 

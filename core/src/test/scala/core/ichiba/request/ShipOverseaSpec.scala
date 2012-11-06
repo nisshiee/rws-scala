@@ -2,6 +2,8 @@ package rwsscala.ichiba
 
 import org.specs2._, matcher.DataTables
 
+import rwsscala.util._
+
 class ShipOverseaSpec extends Specification with DataTables { def is =
 
   "ShipOversea"                                                                                     ^
@@ -17,13 +19,14 @@ class ShipOverseaSpec extends Specification with DataTables { def is =
 
   import OverseaArea._
   import ShipOversea._
+  import ItemSearchParameters._
 
-  def e1 = All.param must beEmpty
-  def e2 = OnlyAccept(AllCountry).param must equalTo(Seq("shipOverseasFlag" -> "1"))
+  def e1 = (All: ShipOversea).param must beEmpty
+  def e2 = (OnlyAccept(AllCountry): ShipOversea).param must equalTo(Seq("shipOverseasFlag" -> "1"))
   def e3 =
     "area"       | "code" |
     UnitedStates ! "US"   |> { (area, code) =>
-      OnlyAccept(area).param must equalTo(Seq("shipOverseasFlag" -> "1", "shipOverseasArea" -> code))
+      (OnlyAccept(area): ShipOversea).param must equalTo(Seq("shipOverseasFlag" -> "1", "shipOverseasArea" -> code))
     }
 
   def e4 =

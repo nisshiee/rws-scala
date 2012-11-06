@@ -1,6 +1,7 @@
 package rwsscala.ichiba
 
 import rwsscala._
+import rwsscala.util._
 import org.specs2._, matcher.DataTables
 
 class AsurakuSpec extends Specification with DataTables { def is =
@@ -17,16 +18,17 @@ class AsurakuSpec extends Specification with DataTables { def is =
 
   import Asuraku._
   import AsurakuArea._
+  import ItemSearchParameters._
 
-  def e1 = All.param must beEmpty
-  def e2 = OnlyAccept(AllArea).param must equalTo(Seq("asurakuFlag" -> "1"))
+  def e1 = (All: Asuraku).param must beEmpty
+  def e2 = (OnlyAccept(AllArea): Asuraku).param must equalTo(Seq("asurakuFlag" -> "1"))
   def e3 =
     "area"      | "code" |
     AllHokkaido ! "100"  |
     Hokkaido    ! "1"    |
     AllKanto    ! "102"  |
     Tokyo       ! "13"   |> { (area, code) =>
-      OnlyAccept(area).param must equalTo(Seq("asurakuFlag" -> "1", "asurakuArea" -> code))
+      (OnlyAccept(area): Asuraku).param must equalTo(Seq("asurakuFlag" -> "1", "asurakuArea" -> code))
     }
 
   def e4 =

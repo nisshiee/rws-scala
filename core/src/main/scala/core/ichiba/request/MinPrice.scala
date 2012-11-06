@@ -1,21 +1,13 @@
 package rwsscala.ichiba
 
-import rwsscala.util._
 import scalaz._, Scalaz._
 
-sealed trait MinPrice extends Parameter
+sealed trait MinPrice
 
 object MinPrice {
 
-  private case class On(value: Long) extends MinPrice {
-
-    def param = Seq("minPrice" -> value.toString)
-  }
-
-  case object Off extends MinPrice {
-
-    def param = Seq()
-  }
+  private case class On(value: Long) extends MinPrice
+  case object Off extends MinPrice
 
   def apply(value: Long): MinPrice = value match {
     case v if v < 0L => On(0L)

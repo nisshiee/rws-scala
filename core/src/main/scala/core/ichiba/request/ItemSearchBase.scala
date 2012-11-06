@@ -1,7 +1,5 @@
 package rwsscala.ichiba
 
-import rwsscala.util._
-
 /**
  * keyword, genreId, itemCodeのいずれかがセットされている事が保証された、リクエストパラメータ
  */
@@ -9,14 +7,7 @@ case class ItemSearchBase private (
    keyword: Option[String]
   ,genreId: Option[Long]
   ,itemCode: Option[String]
-) extends Parameter {
-  def param: Seq[(String, String)] = Seq(
-     keyword map { "keyword" -> _ }
-    ,genreId map { "genreId" -> _.toString }
-    ,itemCode map { "itemCode" -> _ }
-  ).flatten
-
-}
+)
 
 object ItemSearchBase {
 

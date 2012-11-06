@@ -3,6 +3,8 @@ package rwsscala.ichiba
 import org.specs2._, matcher.DataTables
 import scalaz._, Scalaz._
 
+import rwsscala.util._
+
 class MaxPriceSpec extends Specification with DataTables { def is =
 
   "MaxPrice"                                                                                        ^
@@ -55,7 +57,10 @@ class MaxPriceSpec extends Specification with DataTables { def is =
     case _ => ok
   }
 
-  def e4 = MaxPrice.Off.param must beEmpty
+  def e4 = {
+    import ItemSearchParameters._
+    (MaxPrice.Off: MaxPrice).param must beEmpty
+  }
 
 
   def e5 =
@@ -66,6 +71,7 @@ class MaxPriceSpec extends Specification with DataTables { def is =
     0L      ! "0"      |
     1L      ! "1"      |
     999999L ! "999999" |> { (input, output) =>
+      import ItemSearchParameters._
       MaxPrice(input).param must equalTo(Seq("maxPrice" -> output))
     }
 

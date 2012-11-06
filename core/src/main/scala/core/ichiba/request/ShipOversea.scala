@@ -1,23 +1,11 @@
 package rwsscala.ichiba
 
-import rwsscala.util._
-
-sealed trait ShipOversea extends Parameter
+sealed trait ShipOversea
 
 object ShipOversea {
 
-  case object All extends ShipOversea {
-    def param = Seq()
-  }
-  case class OnlyAccept(area: OverseaArea) extends ShipOversea {
-    def param = area match {
-      case OverseaArea.AllCountry => Seq("shipOverseasFlag" -> "1")
-      case _ => Seq(
-         "shipOverseasFlag" -> "1"
-        ,"shipOverseasArea" -> area.code
-      )
-    }
-  }
+  case object All extends ShipOversea
+  case class OnlyAccept(area: OverseaArea) extends ShipOversea
 }
 
 trait ShipOverseas {

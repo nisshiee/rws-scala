@@ -2,6 +2,9 @@ package rwsscala
 
 import org.specs2._, matcher.DataTables
 
+import rwsscala.util._
+import rwsscala.ichiba._
+
 class HitSpec extends Specification with DataTables { def is =
 
   "Hit"                                                                                             ^
@@ -57,6 +60,7 @@ class HitSpec extends Specification with DataTables { def is =
     "value" | "result" |
     30      ! Seq()    |
     31      ! Seq()    |> { (value, result) =>
+      import ItemSearchParameters._
       Hit(value).param must beEmpty
     }
 
@@ -67,6 +71,7 @@ class HitSpec extends Specification with DataTables { def is =
     1       ! Seq("hits" -> "1")  |
     15      ! Seq("hits" -> "15") |
     29      ! Seq("hits" -> "29") |> { (value, result) =>
+      import ItemSearchParameters._
       Hit(value).param must equalTo(result)
     }
 

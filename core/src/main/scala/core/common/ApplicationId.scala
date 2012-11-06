@@ -2,7 +2,7 @@ package rwsscala
 
 import rwsscala.util._
 
-case class ApplicationId(value: String) extends Parameter {
+case class ApplicationId(value: String) {
   def param = Seq("applicationId" -> value)
 }
 

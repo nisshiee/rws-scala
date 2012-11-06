@@ -1,34 +1,21 @@
 package rwsscala.ichiba
 
-import rwsscala.util._
 import scalaz._, Scalaz._
 
-sealed trait PointRate extends Parameter
+sealed trait PointRate
 
 object PointRate {
 
-  def apply(value: Int) = On(value)
+  case object Off extends PointRate
+  sealed trait On extends PointRate
+  case object AnyRate extends On
+  private case class GivenRate(value: Int) extends On
+
+  def apply(value: Int): PointRate = On(value)
 
   def unapply(p: PointRate): Option[Int] = p match {
     case o: On => On.unapply(o)
     case _ => none
-  }
-
-  case object Off extends PointRate {
-
-    def param = Seq()
-  }
-
-  sealed trait On extends PointRate
-
-  case object AnyRate extends On {
-
-    def param = Seq("pointRateFlag" -> "1")
-  }
-
-  private case class GivenRate(value: Int) extends On {
-
-    def param = Seq("pointRateFlag" -> "1", "pointRate" -> value.toString)
   }
 
   object On {

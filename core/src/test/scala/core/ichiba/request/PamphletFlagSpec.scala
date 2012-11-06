@@ -2,6 +2,8 @@ package rwsscala.ichiba
 
 import org.specs2._
 
+import rwsscala.util._
+
 class PamphletFlagSpec extends Specification { def is =
 
   "PamphletFlag"                                                                                    ^
@@ -11,7 +13,8 @@ class PamphletFlagSpec extends Specification { def is =
                                                                                                     end
 
   import PamphletFlag._
+  import ItemSearchParameters._
 
-  def e1 = All.param must beEmpty
-  def e2 = OnlyAccept.param must equalTo(Seq("pamphletFlag" -> "1"))
+  def e1 = (All: PamphletFlag).param must beEmpty
+  def e2 = (OnlyAccept: PamphletFlag).param must equalTo(Seq("pamphletFlag" -> "1"))
 }
